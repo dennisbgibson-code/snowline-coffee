@@ -9,22 +9,21 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --espresso: #1a0f0a;
+      --espresso:   #1a0f0a;
       --dark-roast: #2c1810;
-      --medium: #3d2314;
-      --mahogany: #5c3220;
-      --copper: #b5632a;
-      --gold: #c8963c;
+      --medium:     #3d2314;
+      --mahogany:   #5c3220;
+      --copper:     #b5632a;
+      --gold:       #c8963c;
       --gold-light: #e8b860;
-      --cream: #f5ead8;
-      --parchment: #ede0c4;
-      --stone: #d4c5a9;
-      --fog: #8a7f72;
+      --cream:      #f5ead8;
+      --parchment:  #ede0c4;
+      --stone:      #d4c5a9;
+      --fog:        #8a7f72;
     }
 
     html { scroll-behavior: smooth; }
 
-    /* ── WIX SAFE: no cursor:none on body ── */
     body {
       background: var(--espresso);
       color: var(--cream);
@@ -33,78 +32,59 @@
       overflow-x: hidden;
     }
 
-    /* Noise Overlay */
+    /* Grain overlay */
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.04;
-      pointer-events: none;
-      z-index: 1000;
+      opacity: 0.04; pointer-events: none; z-index: 1000;
     }
 
     /* ─── NAV ─── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 28px 56px;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 24px 56px;
       display: flex; align-items: center; justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(26,15,10,0.95) 0%, transparent 100%);
-      backdrop-filter: blur(4px);
+      background: linear-gradient(to bottom, rgba(26,15,10,0.96) 0%, transparent 100%);
+      backdrop-filter: blur(6px);
     }
-    .nav-logo {
-      display: flex; flex-direction: column;
-      gap: 2px;
-    }
+    .nav-logo { display: flex; flex-direction: column; gap: 2px; }
     .nav-logo-main {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--cream);
+      font-size: 1.05rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream);
     }
     .nav-logo-sub {
-      font-size: 0.6rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
+      font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
     }
-    .nav-links {
-      display: flex; gap: 48px; list-style: none;
+    .nav-logo-sub a {
+      color: var(--gold-light); text-decoration: none;
+      border-bottom: 1px solid rgba(232,184,96,0.4);
+      padding-bottom: 1px;
+      transition: color 0.3s, border-color 0.3s;
     }
+    .nav-logo-sub a:hover { color: var(--cream); border-color: var(--cream); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
     .nav-links a {
-      text-decoration: none;
-      color: var(--stone);
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-weight: 500;
+      text-decoration: none; color: var(--stone);
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500;
       transition: color 0.3s;
     }
     .nav-links a:hover { color: var(--gold-light); }
     .nav-cta {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 500;
-      color: var(--espresso);
-      background: var(--gold);
-      padding: 10px 24px;
-      text-decoration: none;
+      font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 600; color: var(--espresso); background: var(--gold);
+      padding: 10px 22px; text-decoration: none;
       transition: background 0.3s, transform 0.2s;
     }
     .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
 
     /* ─── HERO ─── */
     .hero {
-      min-height: 100vh;
-      position: relative;
+      min-height: 100vh; position: relative;
       display: flex; align-items: flex-end;
-      padding: 0 56px 100px;
-      overflow: hidden;
+      padding: 0 56px 100px; overflow: hidden;
     }
     .hero-bg {
       position: absolute; inset: 0;
@@ -114,8 +94,7 @@
         linear-gradient(135deg, var(--espresso) 0%, var(--dark-roast) 50%, #0e0806 100%);
     }
     .hero-ring {
-      position: absolute;
-      border-radius: 50%;
+      position: absolute; border-radius: 50%;
       border: 1px solid rgba(200,150,60,0.08);
       animation: slowSpin 40s linear infinite;
     }
@@ -125,97 +104,59 @@
     @keyframes slowSpin { to { transform: rotate(360deg); } }
 
     .hero-altitude {
-      position: absolute;
-      top: 50%; right: 56px;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--fog);
+      position: absolute; top: 50%; right: 56px;
+      writing-mode: vertical-rl; transform: rotate(180deg);
+      font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--fog);
     }
-
     .hero-content {
-      position: relative; z-index: 2;
-      max-width: 760px;
-      animation: heroReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+      position: relative; z-index: 2; max-width: 760px;
+      animation: heroReveal 1.4s cubic-bezier(0.16,1,0.3,1) both;
     }
     @keyframes heroReveal {
       from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     .hero-eyebrow {
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-      margin-bottom: 24px;
-      animation: heroReveal 1.4s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      font-size: 0.63rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 24px;
+      animation: heroReveal 1.4s 0.1s cubic-bezier(0.16,1,0.3,1) both;
     }
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(4rem, 8vw, 7rem);
-      font-weight: 300;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      margin-bottom: 36px;
-      animation: heroReveal 1.4s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+      font-size: clamp(3.8rem, 8vw, 7rem);
+      font-weight: 300; line-height: 0.92; letter-spacing: -0.02em; margin-bottom: 36px;
+      animation: heroReveal 1.4s 0.2s cubic-bezier(0.16,1,0.3,1) both;
     }
-    .hero-title em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
     .hero-desc {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--stone);
-      max-width: 480px;
-      margin-bottom: 48px;
-      animation: heroReveal 1.4s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+      font-size: 1rem; line-height: 1.8; color: var(--stone);
+      max-width: 480px; margin-bottom: 48px;
+      animation: heroReveal 1.4s 0.3s cubic-bezier(0.16,1,0.3,1) both;
     }
     .hero-actions {
       display: flex; gap: 24px; align-items: center;
-      animation: heroReveal 1.4s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation: heroReveal 1.4s 0.4s cubic-bezier(0.16,1,0.3,1) both;
     }
     .btn-primary {
-      background: var(--gold);
-      color: var(--espresso);
-      padding: 16px 40px;
-      text-decoration: none;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-weight: 600;
-      transition: background 0.3s, transform 0.2s;
-      display: inline-block;
+      background: var(--gold); color: var(--espresso);
+      padding: 16px 40px; text-decoration: none;
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+      transition: background 0.3s, transform 0.2s; display: inline-block;
     }
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
     .btn-ghost {
-      color: var(--stone);
-      text-decoration: none;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(138,127,114,0.4);
-      padding-bottom: 2px;
+      color: var(--stone); text-decoration: none;
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+      border-bottom: 1px solid rgba(138,127,114,0.4); padding-bottom: 2px;
       transition: color 0.3s, border-color 0.3s;
     }
     .btn-ghost:hover { color: var(--cream); border-color: var(--cream); }
-
     .hero-scroll {
-      position: absolute; bottom: 40px; left: 50%;
-      transform: translateX(-50%);
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 10px;
-      animation: heroReveal 1.4s 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation: heroReveal 1.4s 0.6s cubic-bezier(0.16,1,0.3,1) both;
     }
-    .hero-scroll span {
-      font-size: 0.55rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--fog);
-    }
+    .hero-scroll span { font-size: 0.52rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--fog); }
     .scroll-line {
       width: 1px; height: 50px;
       background: linear-gradient(to bottom, var(--gold), transparent);
@@ -223,530 +164,275 @@
     }
     @keyframes scrollPulse {
       0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
-      50% { opacity: 1; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1); }
     }
 
-    /* ─── DIVIDER ─── */
+    /* ─── SHARED LAYOUT ─── */
+    .section-label {
+      font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 18px;
+    }
     .divider {
       display: flex; align-items: center; gap: 24px;
-      padding: 0 56px;
-      margin: 80px 0;
+      padding: 0 56px; margin: 72px 0;
     }
     .divider-line { flex: 1; height: 1px; background: rgba(200,150,60,0.2); }
-    .divider-mark {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      color: var(--gold);
-      font-style: italic;
-    }
+    .divider-mark { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); font-style: italic; }
 
     /* ─── PHILOSOPHY ─── */
     .philosophy {
       padding: 0 56px 120px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: center;
-    }
-    .section-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-      margin-bottom: 20px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
     }
     .philosophy-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      margin-bottom: 32px;
+      font-size: clamp(2.4rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 32px;
     }
     .philosophy-title em { font-style: italic; color: var(--gold-light); }
-    .philosophy-text {
-      font-size: 0.95rem;
-      line-height: 1.9;
-      color: var(--stone);
-      margin-bottom: 20px;
-    }
-    .philosophy-visual {
-      position: relative;
-      height: 550px;
-    }
+    .philosophy-text { font-size: 0.93rem; line-height: 1.9; color: var(--stone); margin-bottom: 20px; }
+    .philosophy-visual { position: relative; height: 550px; }
     .phil-card {
-      position: absolute;
-      background: var(--dark-roast);
-      border: 1px solid rgba(200,150,60,0.15);
-      padding: 40px;
+      position: absolute; background: var(--dark-roast);
+      border: 1px solid rgba(200,150,60,0.15); padding: 40px;
     }
     .phil-card-1 { top: 0; left: 0; right: 80px; bottom: 120px; }
     .phil-card-2 { top: 80px; left: 60px; right: 0; bottom: 0; background: var(--medium); border-color: rgba(200,150,60,0.25); }
-    .phil-card-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 5rem;
-      font-weight: 300;
-      color: rgba(200,150,60,0.15);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-    .phil-card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
-    .phil-card-text { font-size: 0.85rem; line-height: 1.7; color: var(--stone); }
+    .phil-card-num { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(200,150,60,0.15); line-height: 1; margin-bottom: 12px; }
+    .phil-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; margin-bottom: 12px; }
+    .phil-card-text { font-size: 0.84rem; line-height: 1.7; color: var(--stone); }
 
     /* ─── ORIGINS ─── */
-    .origins {
-      padding: 100px 56px;
-      background: linear-gradient(to bottom, transparent, var(--dark-roast), transparent);
-    }
+    .origins { padding: 100px 56px; background: linear-gradient(to bottom, transparent, var(--dark-roast), transparent); }
     .origins-header { text-align: center; margin-bottom: 80px; }
-    .origins-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 300;
-      line-height: 1.1;
-    }
+    .origins-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; }
     .origins-title em { font-style: italic; color: var(--gold-light); }
-    .origins-sub {
-      font-size: 0.85rem;
-      line-height: 1.8;
-      color: var(--fog);
-      max-width: 500px;
-      margin: 24px auto 0;
+    .origins-sub { font-size: 0.84rem; line-height: 1.8; color: var(--fog); max-width: 500px; margin: 24px auto 0; }
+    .origins-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .origin-item {
+      padding: 52px 38px; background: rgba(44,24,16,0.6);
+      border: 1px solid rgba(200,150,60,0.1);
+      transition: background 0.4s, border-color 0.4s, transform 0.4s;
+      position: relative; overflow: hidden;
     }
-    .origins-grid {
+    .origin-item::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .origin-item:hover { background: rgba(61,35,20,0.8); border-color: rgba(200,150,60,0.25); transform: translateY(-4px); }
+    .origin-item:hover::before { transform: scaleX(1); }
+    .origin-flag { font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 500; }
+    .origin-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; margin-bottom: 8px; }
+    .origin-region { font-size: 0.78rem; color: var(--fog); margin-bottom: 22px; letter-spacing: 0.05em; }
+    .origin-notes { font-size: 0.82rem; color: var(--stone); line-height: 1.7; margin-bottom: 26px; }
+    .origin-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,150,60,0.3); padding: 5px 12px; font-weight: 500; }
+    .origin-altitude {
+      margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(200,150,60,0.15);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .origin-altitude-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fog); }
+    .origin-altitude-value { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light); }
+
+    /* ─── SOUTH AMERICA SECTION ─── */
+    .sa-section { padding: 120px 56px; }
+    .sa-header { margin-bottom: 72px; }
+    .sa-header-inner {
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 48px;
+    }
+    .sa-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 300; line-height: 1.05; }
+    .sa-title em { font-style: italic; color: var(--gold-light); }
+    .sa-intro { max-width: 420px; font-size: 0.88rem; line-height: 1.85; color: var(--fog); }
+    .sa-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
     }
-    .origin-item {
-      padding: 56px 40px;
-      background: rgba(44,24,16,0.6);
+    .sa-card {
+      background: var(--dark-roast);
       border: 1px solid rgba(200,150,60,0.1);
-      transition: background 0.4s, border-color 0.4s, transform 0.4s;
-      position: relative;
       overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s;
+      display: flex; flex-direction: column;
     }
-    .origin-item::before {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    .sa-card:hover { transform: translateY(-6px); border-color: rgba(200,150,60,0.28); }
+    .sa-card-header {
+      padding: 36px 36px 28px;
+      background: linear-gradient(135deg, var(--medium), var(--dark-roast));
+      border-bottom: 1px solid rgba(200,150,60,0.12);
+      position: relative;
     }
-    .origin-item:hover { background: rgba(61,35,20,0.8); border-color: rgba(200,150,60,0.25); transform: translateY(-4px); }
-    .origin-item:hover::before { transform: scaleX(1); }
-    .origin-flag {
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-      font-weight: 500;
-    }
-    .origin-name {
+    .sa-rank {
+      position: absolute; top: 20px; right: 20px;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 400;
-      margin-bottom: 8px;
+      font-size: 2.8rem; font-weight: 300; line-height: 1;
+      color: rgba(200,150,60,0.12);
     }
-    .origin-region {
-      font-size: 0.8rem;
-      color: var(--fog);
-      margin-bottom: 24px;
-      letter-spacing: 0.05em;
+    .sa-flag { font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 10px; }
+    .sa-country-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; margin-bottom: 6px; }
+    .sa-region-tag { font-size: 0.72rem; color: var(--fog); }
+    .sa-card-body { padding: 28px 36px 32px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
+    .sa-row { display: flex; flex-direction: column; gap: 5px; }
+    .sa-row-label { font-size: 0.56rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .sa-row-value { font-size: 0.84rem; line-height: 1.6; color: var(--stone); }
+    .sa-metrics {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-top: 4px;
+      padding-top: 20px; border-top: 1px solid rgba(200,150,60,0.12);
     }
-    .origin-notes {
-      font-size: 0.82rem;
-      color: var(--stone);
-      line-height: 1.7;
-      margin-bottom: 28px;
+    .sa-metric { display: flex; flex-direction: column; gap: 4px; }
+    .sa-metric-val { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light); }
+    .sa-metric-label { font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fog); }
+    .sa-card-footer {
+      padding: 0 36px 28px;
     }
-    .origin-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag {
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
+    .sa-link {
+      display: inline-block;
+      font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
       border: 1px solid rgba(200,150,60,0.3);
-      padding: 5px 12px;
-      font-weight: 500;
+      padding: 9px 18px; text-decoration: none;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
     }
-    .origin-altitude {
-      margin-top: 28px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(200,150,60,0.15);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .origin-altitude-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fog); }
-    .origin-altitude-value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      color: var(--gold-light);
-    }
+    .sa-link:hover { background: var(--gold); color: var(--espresso); border-color: var(--gold); }
+    .sa-link::after { content: ' →'; }
 
     /* ─── PROCESS ─── */
     .process { padding: 120px 56px; }
-    .process-header {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      margin-bottom: 80px;
-    }
-    .process-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: 300;
-      line-height: 1.1;
-    }
+    .process-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 80px; }
+    .process-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; }
     .process-title em { font-style: italic; color: var(--gold-light); }
-    .process-desc { max-width: 380px; font-size: 0.9rem; line-height: 1.8; color: var(--fog); }
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 48px;
-      position: relative;
-    }
+    .process-desc { max-width: 380px; font-size: 0.88rem; line-height: 1.8; color: var(--fog); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; position: relative; }
     .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 28px; left: 0; right: 0;
-      height: 1px;
+      content: ''; position: absolute;
+      top: 28px; left: 0; right: 0; height: 1px;
       background: linear-gradient(to right, transparent, rgba(200,150,60,0.3), transparent);
     }
     .process-step { position: relative; }
     .step-num {
-      width: 56px; height: 56px;
-      border: 1px solid rgba(200,150,60,0.3);
-      border-radius: 50%;
+      width: 56px; height: 56px; border: 1px solid rgba(200,150,60,0.3); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--gold);
-      margin-bottom: 28px;
-      background: var(--espresso);
-      position: relative; z-index: 1;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold);
+      margin-bottom: 28px; background: var(--espresso); position: relative; z-index: 1;
       transition: background 0.3s, border-color 0.3s, color 0.3s;
     }
     .process-step:hover .step-num { background: var(--gold); color: var(--espresso); border-color: var(--gold); }
-    .step-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
-    .step-text { font-size: 0.83rem; line-height: 1.7; color: var(--fog); }
+    .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 12px; }
+    .step-text { font-size: 0.82rem; line-height: 1.7; color: var(--fog); }
 
     /* ─── BANNER ─── */
     .banner {
-      padding: 120px 56px;
-      background: var(--dark-roast);
+      padding: 120px 56px; background: var(--dark-roast);
       border-top: 1px solid rgba(200,150,60,0.15);
       border-bottom: 1px solid rgba(200,150,60,0.15);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      text-align: center; position: relative; overflow: hidden;
     }
-    .banner::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center, rgba(92,50,32,0.3) 0%, transparent 70%);
-    }
-    .banner-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-      margin-bottom: 24px;
-      position: relative; z-index: 1;
-    }
-    .banner-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.3;
-      max-width: 800px;
-      margin: 0 auto 32px;
-      position: relative; z-index: 1;
-    }
-    .banner-attr {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--fog);
-      font-weight: 500;
-      position: relative; z-index: 1;
-    }
+    .banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(92,50,32,0.3) 0%, transparent 70%); }
+    .banner-label { font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 24px; position: relative; z-index: 1; }
+    .banner-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 4vw, 3.2rem); font-weight: 300; font-style: italic; line-height: 1.3; max-width: 800px; margin: 0 auto 32px; position: relative; z-index: 1; }
+    .banner-attr { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fog); font-weight: 500; position: relative; z-index: 1; }
 
     /* ─── SHOP ─── */
     .shop { padding: 120px 56px; }
     .shop-header { text-align: center; margin-bottom: 72px; }
-    .shop-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
-      font-weight: 300;
-    }
+    .shop-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4vw, 3.5rem); font-weight: 300; }
     .shop-title em { font-style: italic; color: var(--gold-light); }
-    .shop-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
+    .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
     .shop-card {
-      background: var(--dark-roast);
-      border: 1px solid rgba(200,150,60,0.1);
-      overflow: hidden;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
+      background: var(--dark-roast); border: 1px solid rgba(200,150,60,0.1); overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s;
     }
     .shop-card:hover { transform: translateY(-8px); border-color: rgba(200,150,60,0.3); }
-    .shop-card-img {
-      height: 280px;
-      position: relative;
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .coffee-art {
-      width: 120px; height: 120px;
-      position: relative;
-    }
-    .coffee-circle {
-      position: absolute; inset: 0;
-      border-radius: 50%;
-      border: 1px solid rgba(200,150,60,0.2);
-      animation: slowSpin 15s linear infinite;
-    }
+    .shop-card-img { height: 260px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .coffee-art { width: 120px; height: 120px; position: relative; }
+    .coffee-circle { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(200,150,60,0.2); animation: slowSpin 15s linear infinite; }
     .coffee-circle:nth-child(2) { inset: 16px; animation-direction: reverse; animation-duration: 20s; border-color: rgba(200,150,60,0.35); }
     .coffee-circle:nth-child(3) { inset: 32px; animation-duration: 10s; border-color: rgba(200,150,60,0.5); }
-    .coffee-dot {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 24px; height: 24px;
-      background: var(--gold);
-      border-radius: 50%;
-    }
-    .card-badge {
-      position: absolute; top: 20px; right: 20px;
-      font-size: 0.55rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      background: var(--gold);
-      color: var(--espresso);
-      padding: 5px 12px;
-      font-weight: 600;
-    }
-    .shop-card-body { padding: 32px; }
-    .card-origin { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-weight: 500; }
-    .card-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
-    .card-desc { font-size: 0.82rem; line-height: 1.7; color: var(--fog); margin-bottom: 28px; }
+    .coffee-dot { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 24px; height: 24px; background: var(--gold); border-radius: 50%; }
+    .card-badge { position: absolute; top: 18px; right: 18px; font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; background: var(--gold); color: var(--espresso); padding: 5px 12px; font-weight: 600; }
+    .shop-card-body { padding: 30px; }
+    .card-origin { font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-weight: 500; }
+    .card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 500; margin-bottom: 12px; }
+    .card-desc { font-size: 0.8rem; line-height: 1.7; color: var(--fog); margin-bottom: 26px; }
     .card-footer { display: flex; align-items: center; justify-content: space-between; }
-    .card-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      color: var(--gold-light);
-    }
+    .card-price { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold-light); }
     .card-price span { font-size: 0.7rem; font-family: 'Jost', sans-serif; color: var(--fog); margin-left: 4px; }
-    .card-btn {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--espresso);
-      background: var(--gold);
-      padding: 10px 20px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s;
-      display: inline-block;
-    }
+    .card-btn { font-size: 0.63rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--espresso); background: var(--gold); padding: 10px 20px; text-decoration: none; font-weight: 600; transition: background 0.3s; display: inline-block; }
     .card-btn:hover { background: var(--gold-light); }
 
-    /* ─── SNOWLINE CONNECTION ─── */
+    /* ─── CONNECTION ─── */
     .connection {
-      padding: 120px 56px;
+      padding: 120px 56px; border-top: 1px solid rgba(200,150,60,0.15);
       background: linear-gradient(135deg, var(--dark-roast) 0%, var(--espresso) 100%);
-      border-top: 1px solid rgba(200,150,60,0.15);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
     }
-    .connection-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
-      line-height: 1.15;
-      margin-bottom: 28px;
-    }
+    .connection-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.15; margin-bottom: 28px; }
     .connection-title em { font-style: italic; color: var(--gold-light); }
-    .connection-text { font-size: 0.9rem; line-height: 1.85; color: var(--stone); margin-bottom: 20px; }
-    .connection-stats {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 32px; margin-top: 48px;
-    }
-    .stat { padding: 28px; border-left: 2px solid rgba(200,150,60,0.3); }
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      color: var(--gold-light);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fog); }
-    .connection-visual {
-      display: flex; align-items: center; justify-content: center;
-      padding: 60px 0;
-    }
-    .snowline-emblem {
-      position: relative;
-      width: 320px; height: 320px;
-    }
-    .emblem-ring {
-      position: absolute; inset: 0;
-      border-radius: 50%;
-      border: 1px solid rgba(200,150,60,0.2);
-    }
+    .connection-text { font-size: 0.88rem; line-height: 1.85; color: var(--stone); margin-bottom: 18px; }
+    .connection-text a { color: var(--gold-light); text-decoration: none; border-bottom: 1px solid rgba(232,184,96,0.35); padding-bottom: 1px; transition: color 0.3s, border-color 0.3s; }
+    .connection-text a:hover { color: var(--cream); border-color: var(--cream); }
+    .connection-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    .stat { padding: 26px; border-left: 2px solid rgba(200,150,60,0.3); }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--gold-light); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fog); }
+    .connection-visual { display: flex; align-items: center; justify-content: center; padding: 60px 0; }
+    .snowline-emblem { position: relative; width: 320px; height: 320px; }
+    .emblem-ring { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(200,150,60,0.2); }
     .emblem-ring-2 { inset: 30px; border-color: rgba(200,150,60,0.3); animation: slowSpin 20s linear infinite; }
     .emblem-ring-3 { inset: 60px; border-color: rgba(200,150,60,0.15); animation: slowSpin 35s linear infinite reverse; }
-    .emblem-center {
-      position: absolute;
-      inset: 90px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--mahogany) 0%, var(--dark-roast) 100%);
-      border: 1px solid rgba(200,150,60,0.4);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 8px;
-    }
-    .emblem-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-align: center;
-      line-height: 1.3;
-    }
+    .emblem-center { position: absolute; inset: 90px; border-radius: 50%; background: radial-gradient(circle, var(--mahogany) 0%, var(--dark-roast) 100%); border: 1px solid rgba(200,150,60,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+    .emblem-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 500; letter-spacing: 0.1em; text-align: center; line-height: 1.3; }
     .emblem-divider { width: 40px; height: 1px; background: var(--gold); }
     .emblem-sub { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
-    .emblem-tick {
-      position: absolute;
-      width: 6px; height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
-      top: 30px; left: 50%;
-      transform: translateX(-50%);
-    }
+    .emblem-tick { position: absolute; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; top: 30px; left: 50%; transform: translateX(-50%); }
 
     /* ─── NEWSLETTER ─── */
-    .newsletter {
-      padding: 100px 56px;
-      text-align: center;
-      background: var(--dark-roast);
-      border-top: 1px solid rgba(200,150,60,0.15);
-    }
-    .newsletter-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
-      margin-bottom: 16px;
-    }
+    .newsletter { padding: 100px 56px; text-align: center; background: var(--dark-roast); border-top: 1px solid rgba(200,150,60,0.15); }
+    .newsletter-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; margin-bottom: 16px; }
     .newsletter-title em { font-style: italic; color: var(--gold-light); }
-    .newsletter-sub { font-size: 0.88rem; color: var(--fog); line-height: 1.7; margin-bottom: 40px; }
-    .newsletter-form {
-      display: flex;
-      max-width: 480px;
-      margin: 0 auto;
-      gap: 0;
-    }
-    .newsletter-input {
-      flex: 1;
-      padding: 16px 20px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(200,150,60,0.25);
-      border-right: none;
-      color: var(--cream);
-      font-family: 'Jost', sans-serif;
-      font-size: 0.85rem;
-      outline: none;
-      transition: border-color 0.3s;
-    }
+    .newsletter-sub { font-size: 0.86rem; color: var(--fog); line-height: 1.7; margin-bottom: 40px; }
+    .newsletter-form { display: flex; max-width: 480px; margin: 0 auto; }
+    .newsletter-input { flex: 1; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(200,150,60,0.25); border-right: none; color: var(--cream); font-family: 'Jost', sans-serif; font-size: 0.84rem; outline: none; transition: border-color 0.3s; }
     .newsletter-input::placeholder { color: var(--fog); }
     .newsletter-input:focus { border-color: rgba(200,150,60,0.6); }
-    .newsletter-btn {
-      padding: 16px 28px;
-      background: var(--gold);
-      color: var(--espresso);
-      border: none;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-      white-space: nowrap;
-    }
+    .newsletter-btn { padding: 16px 28px; background: var(--gold); color: var(--espresso); border: none; font-family: 'Jost', sans-serif; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
     .newsletter-btn:hover { background: var(--gold-light); }
 
     /* ─── FOOTER ─── */
-    footer {
-      padding: 80px 56px 48px;
-      border-top: 1px solid rgba(200,150,60,0.15);
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 60px;
-      margin-bottom: 72px;
-    }
-    .footer-brand-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      margin-bottom: 6px;
-    }
-    .footer-brand-sub { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 500; }
-    .footer-brand-desc { font-size: 0.82rem; line-height: 1.8; color: var(--fog); }
-    .footer-col-title { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 24px; }
+    footer { padding: 80px 56px 48px; border-top: 1px solid rgba(200,150,60,0.15); }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 72px; }
+    .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; letter-spacing: 0.1em; margin-bottom: 6px; }
+    .footer-brand-sub { font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 500; }
+    .footer-brand-sub a { color: var(--gold-light); text-decoration: none; transition: color 0.3s; }
+    .footer-brand-sub a:hover { color: var(--cream); }
+    .footer-brand-desc { font-size: 0.8rem; line-height: 1.8; color: var(--fog); }
+    .footer-col-title { font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 24px; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-    .footer-links a { text-decoration: none; color: var(--fog); font-size: 0.85rem; transition: color 0.3s; }
+    .footer-links a { text-decoration: none; color: var(--fog); font-size: 0.82rem; transition: color 0.3s; }
     .footer-links a:hover { color: var(--cream); }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center;
-      padding-top: 40px;
-      border-top: 1px solid rgba(200,150,60,0.1);
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .footer-copy { font-size: 0.72rem; color: var(--fog); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 40px; border-top: 1px solid rgba(200,150,60,0.1); flex-wrap: wrap; gap: 20px; }
+    .footer-copy { font-size: 0.7rem; color: var(--fog); }
     .footer-legal { display: flex; gap: 32px; }
-    .footer-legal a { font-size: 0.7rem; color: var(--fog); text-decoration: none; transition: color 0.3s; }
+    .footer-legal a { font-size: 0.68rem; color: var(--fog); text-decoration: none; transition: color 0.3s; }
     .footer-legal a:hover { color: var(--cream); }
-    .footer-snowline { font-size: 0.65rem; letter-spacing: 0.15em; color: var(--fog); }
-    .footer-snowline a { color: var(--gold); text-decoration: none; }
+    .footer-snowline { font-size: 0.64rem; letter-spacing: 0.14em; color: var(--fog); }
+    .footer-snowline a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+    .footer-snowline a:hover { color: var(--gold-light); }
 
-    /* ─── SCROLL FADE ─── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
-    }
+    /* ─── FADE UP ─── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
     .fade-up-delay-1 { transition-delay: 0.1s; }
     .fade-up-delay-2 { transition-delay: 0.2s; }
     .fade-up-delay-3 { transition-delay: 0.3s; }
+    .fade-up-delay-4 { transition-delay: 0.4s; }
+    .fade-up-delay-5 { transition-delay: 0.5s; }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) {
+      .sa-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 960px) {
       nav { padding: 20px 28px; }
       .nav-links, .nav-cta { display: none; }
@@ -754,16 +440,19 @@
       .hero-altitude { display: none; }
       .divider { padding: 0 28px; margin: 48px 0; }
       .philosophy { grid-template-columns: 1fr; padding: 0 28px 80px; gap: 48px; }
-      .philosophy-visual { height: 360px; }
+      .philosophy-visual { height: 340px; }
       .origins { padding: 80px 28px; }
-      .origins-grid { grid-template-columns: 1fr; gap: 2px; }
+      .origins-grid { grid-template-columns: 1fr; }
+      .sa-section { padding: 80px 28px; }
+      .sa-header-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .sa-grid { grid-template-columns: 1fr; }
       .process { padding: 80px 28px; }
       .process-header { flex-direction: column; align-items: flex-start; gap: 24px; }
       .process-steps { grid-template-columns: 1fr 1fr; }
       .process-steps::before { display: none; }
       .banner { padding: 80px 28px; }
       .shop { padding: 80px 28px; }
-      .shop-grid { grid-template-columns: 1fr; gap: 28px; }
+      .shop-grid { grid-template-columns: 1fr; }
       .connection { grid-template-columns: 1fr; padding: 80px 28px; gap: 48px; }
       .connection-visual { display: none; }
       .newsletter { padding: 80px 28px; }
@@ -773,13 +462,13 @@
       .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
-
     @media (max-width: 560px) {
       .process-steps { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; }
       .connection-stats { grid-template-columns: 1fr 1fr; }
-      .hero-title { font-size: 3.2rem; }
+      .hero-title { font-size: 3rem; }
       .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .sa-metrics { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -789,10 +478,11 @@
   <nav>
     <div class="nav-logo">
       <div class="nav-logo-main">Snowline Group Coffee Co.</div>
-      <div class="nav-logo-sub">Part of Snowline Group LLC · Est. Whitefish, MT</div>
+      <div class="nav-logo-sub">Part of <a href="https://www.snowlinegroup.com" target="_blank" rel="noopener">Snowline Group LLC</a> · Whitefish, MT</div>
     </div>
     <ul class="nav-links">
       <li><a href="#origins">Origins</a></li>
+      <li><a href="#south-america">South America</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#shop">Shop</a></li>
       <li><a href="#connection">Our Story</a></li>
@@ -810,10 +500,10 @@
     <div class="hero-content">
       <div class="hero-eyebrow">Snowline Group Coffee Co. · Whitefish, Montana</div>
       <h1 class="hero-title">Where <em>altitude</em><br>meets artistry</h1>
-      <p class="hero-desc">Specialty coffees sourced from the world's highest-growing regions — curated with the same precision and depth we bring to everything Snowline Group does.</p>
+      <p class="hero-desc">Specialty coffees sourced from the world's highest-growing regions — curated with the same precision and depth we bring to everything at <a href="https://www.snowlinegroup.com" target="_blank" rel="noopener" style="color:var(--gold-light);text-decoration:none;border-bottom:1px solid rgba(232,184,96,0.4);">Snowline Group</a>.</p>
       <div class="hero-actions">
         <a href="#shop" class="btn-primary">Explore Our Coffees</a>
-        <a href="#origins" class="btn-ghost">Discover Origins</a>
+        <a href="#south-america" class="btn-ghost">Discover South America</a>
       </div>
     </div>
     <div class="hero-scroll">
@@ -822,11 +512,7 @@
     </div>
   </section>
 
-  <div class="divider">
-    <div class="divider-line"></div>
-    <div class="divider-mark">✦</div>
-    <div class="divider-line"></div>
-  </div>
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
 
   <!-- PHILOSOPHY -->
   <section class="philosophy">
@@ -850,12 +536,12 @@
     </div>
   </section>
 
-  <!-- ORIGINS -->
+  <!-- WORLD ORIGINS -->
   <section class="origins" id="origins">
     <div class="origins-header fade-up">
       <div class="section-label">Single Origins</div>
       <h2 class="origins-title">Coffees from<br>the <em>roof of the world</em></h2>
-      <p class="origins-sub">Each origin tells a story of terrain, climate, and the human hands that tend it. We source only from farms where elevation drives flavor.</p>
+      <p class="origins-sub">Each origin tells a story of terrain, climate, and the human hands that tend it. We source only from farms where elevation drives flavour.</p>
     </div>
     <div class="origins-grid">
       <div class="origin-item fade-up">
@@ -863,48 +549,268 @@
         <div class="origin-name">Gedeb Lot 14</div>
         <div class="origin-region">Gedeo Zone, Southern Ethiopia</div>
         <div class="origin-notes">Vibrant and luminous — cascading layers of jasmine blossom, bergamot, and blackcurrant give way to a long, wine-like finish.</div>
-        <div class="origin-tags">
-          <span class="tag">Natural Process</span>
-          <span class="tag">Light Roast</span>
-          <span class="tag">Washed</span>
-        </div>
-        <div class="origin-altitude">
-          <div class="origin-altitude-label">Grown at</div>
-          <div class="origin-altitude-value">2,100 masl</div>
-        </div>
+        <div class="origin-tags"><span class="tag">Natural Process</span><span class="tag">Light Roast</span><span class="tag">Washed</span></div>
+        <div class="origin-altitude"><div class="origin-altitude-label">Grown at</div><div class="origin-altitude-value">2,100 masl</div></div>
       </div>
       <div class="origin-item fade-up fade-up-delay-1">
         <div class="origin-flag">Colombia · Huila</div>
         <div class="origin-name">Finca La Palma</div>
         <div class="origin-region">San Agustín, Huila Department</div>
         <div class="origin-notes">A perfect balance of sweet and complex — caramel, red apple, and toasted hazelnut with a silken mouthfeel that lingers warmly.</div>
-        <div class="origin-tags">
-          <span class="tag">Washed</span>
-          <span class="tag">Medium Roast</span>
-          <span class="tag">Single Farm</span>
-        </div>
-        <div class="origin-altitude">
-          <div class="origin-altitude-label">Grown at</div>
-          <div class="origin-altitude-value">1,950 masl</div>
-        </div>
+        <div class="origin-tags"><span class="tag">Washed</span><span class="tag">Medium Roast</span><span class="tag">Single Farm</span></div>
+        <div class="origin-altitude"><div class="origin-altitude-label">Grown at</div><div class="origin-altitude-value">1,950 masl</div></div>
       </div>
       <div class="origin-item fade-up fade-up-delay-2">
         <div class="origin-flag">Guatemala · Huehuetenango</div>
         <div class="origin-name">El Injerto Reserve</div>
         <div class="origin-region">Aldea Loma Linda, Huehuetenango</div>
         <div class="origin-notes">Rich and brooding — dark chocolate, dried cherry, and brown sugar meld into a full-bodied cup with a clean, satisfying depth.</div>
-        <div class="origin-tags">
-          <span class="tag">Honey Process</span>
-          <span class="tag">Medium-Dark</span>
-          <span class="tag">Award Lot</span>
-        </div>
-        <div class="origin-altitude">
-          <div class="origin-altitude-label">Grown at</div>
-          <div class="origin-altitude-value">1,800 masl</div>
-        </div>
+        <div class="origin-tags"><span class="tag">Honey Process</span><span class="tag">Medium-Dark</span><span class="tag">Award Lot</span></div>
+        <div class="origin-altitude"><div class="origin-altitude-label">Grown at</div><div class="origin-altitude-value">1,800 masl</div></div>
       </div>
     </div>
   </section>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
+
+  <!-- SOUTH AMERICA COFFEE REGIONS -->
+  <section class="sa-section" id="south-america">
+    <div class="sa-header fade-up">
+      <div class="section-label">Our Sourcing Journeys</div>
+      <div class="sa-header-inner">
+        <h2 class="sa-title">South America's<br>great <em>coffee nations</em></h2>
+        <p class="sa-intro">We travel to the premier coffee-growing regions of South America each harvest season — building direct relationships with farmers at altitude and selecting lots that meet our exacting standards for flavour, traceability, and craft.</p>
+      </div>
+    </div>
+
+    <div class="sa-grid">
+
+      <!-- BRAZIL -->
+      <div class="sa-card fade-up">
+        <div class="sa-card-header">
+          <div class="sa-rank">01</div>
+          <div class="sa-flag">South America · #1 Global Producer</div>
+          <div class="sa-country-name">Brazil</div>
+          <div class="sa-region-tag">Minas Gerais · São Paulo · Espírito Santo · Bahia</div>
+        </div>
+        <div class="sa-card-body">
+          <div class="sa-row">
+            <div class="sa-row-label">Bean Type</div>
+            <div class="sa-row-value">Arabica (70%) &amp; Robusta (30%) — Bourbon, Typica, Catuaí, Mundo Novo varietals</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Tasting Profile</div>
+            <div class="sa-row-value">Full body with low acidity. Notes of dark chocolate, toasted hazelnut, caramel, and brown sugar with a smooth, lingering finish.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Processing</div>
+            <div class="sa-row-value">Natural &amp; pulped natural — cherries dried whole, producing a sweeter, heavier cup with exceptional body.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Altitude</div>
+            <div class="sa-row-value">600 – 1,200 masl. Lower than most specialty origins, but the vast scale and micro-regional diversity compensate.</div>
+          </div>
+          <div class="sa-metrics">
+            <div class="sa-metric"><div class="sa-metric-val">3.98M</div><div class="sa-metric-label">Metric tons / yr</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">~38%</div><div class="sa-metric-label">Global share</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">150+</div><div class="sa-metric-label">Years top producer</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">10,000+</div><div class="sa-metric-label">Farms visited</div></div>
+          </div>
+        </div>
+        <div class="sa-card-footer">
+          <a href="https://www.braziliancoffee.com.br" target="_blank" rel="noopener" class="sa-link">Brazil Coffee Association</a>
+        </div>
+      </div>
+
+      <!-- COLOMBIA -->
+      <div class="sa-card fade-up fade-up-delay-1">
+        <div class="sa-card-header">
+          <div class="sa-rank">02</div>
+          <div class="sa-flag">South America · #3 Global Producer</div>
+          <div class="sa-country-name">Colombia</div>
+          <div class="sa-region-tag">Huila · Antioquia · Nariño · Cauca · Tolima</div>
+        </div>
+        <div class="sa-card-body">
+          <div class="sa-row">
+            <div class="sa-row-label">Bean Type</div>
+            <div class="sa-row-value">100% Arabica — Caturra, Colombia, Castillo, Typica. The only major producer exclusively growing washed Arabica.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Tasting Profile</div>
+            <div class="sa-row-value">Smooth and balanced with bright citric acidity. Red fruit, caramel, mild nuttiness, and a clean, pleasant sweetness.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Processing</div>
+            <div class="sa-row-value">Predominantly washed (wet process) — produces clean, bright, and highly consistent cup profiles prized globally.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Altitude</div>
+            <div class="sa-row-value">1,500 – 2,000 masl. High-altitude volcanic soils of the Andes Cordillera produce the country's finest lots.</div>
+          </div>
+          <div class="sa-metrics">
+            <div class="sa-metric"><div class="sa-metric-val">774K</div><div class="sa-metric-label">Metric tons / yr</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">~7%</div><div class="sa-metric-label">Global share</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">200+</div><div class="sa-metric-label">Years cultivating</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">500K+</div><div class="sa-metric-label">Smallhold farmers</div></div>
+          </div>
+        </div>
+        <div class="sa-card-footer">
+          <a href="https://www.cafedecolombia.com" target="_blank" rel="noopener" class="sa-link">Federación Nacional de Cafeteros</a>
+        </div>
+      </div>
+
+      <!-- PERU -->
+      <div class="sa-card fade-up fade-up-delay-2">
+        <div class="sa-card-header">
+          <div class="sa-rank">03</div>
+          <div class="sa-flag">South America · Specialty Rising Star</div>
+          <div class="sa-country-name">Peru</div>
+          <div class="sa-region-tag">Cajamarca · San Martín · Amazonas · Cusco</div>
+        </div>
+        <div class="sa-card-body">
+          <div class="sa-row">
+            <div class="sa-row-label">Bean Type</div>
+            <div class="sa-row-value">Arabica — Typica, Caturra, Bourbon. One of the world's leading certified organic coffee producers.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Tasting Profile</div>
+            <div class="sa-row-value">Mild, smooth, and nuanced — bright citric acidity, floral aromatics, notes of stone fruit, milk chocolate, and a gentle herbal finish.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Processing</div>
+            <div class="sa-row-value">Washed — traditional methods by smallholder families on Andean slopes, often fully organic and shade-grown.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Altitude</div>
+            <div class="sa-row-value">1,600 – 2,000 masl. Steep Andean microclimates in Cajamarca and Amazonas yield Peru's finest high-altitude lots.</div>
+          </div>
+          <div class="sa-metrics">
+            <div class="sa-metric"><div class="sa-metric-val">353K</div><div class="sa-metric-label">Metric tons / yr</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">#1</div><div class="sa-metric-label">Organic exporter, S.A.</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">10</div><div class="sa-metric-label">Distinct growing zones</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">110K</div><div class="sa-metric-label">Coffee farmers</div></div>
+          </div>
+        </div>
+        <div class="sa-card-footer">
+          <a href="https://jncr.pe" target="_blank" rel="noopener" class="sa-link">Junta Nacional del Café</a>
+        </div>
+      </div>
+
+      <!-- BOLIVIA -->
+      <div class="sa-card fade-up fade-up-delay-3">
+        <div class="sa-card-header">
+          <div class="sa-rank">04</div>
+          <div class="sa-flag">South America · Hidden Gem</div>
+          <div class="sa-country-name">Bolivia</div>
+          <div class="sa-region-tag">Caranavi · La Paz · Yungas · Cochabamba</div>
+        </div>
+        <div class="sa-card-body">
+          <div class="sa-row">
+            <div class="sa-row-label">Bean Type</div>
+            <div class="sa-row-value">100% Arabica — Typica and Caturra dominants. Extremely limited production makes Bolivian lots rare specialty finds.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Tasting Profile</div>
+            <div class="sa-row-value">Complex and vivid — bright lemon zest acidity, jasmine florals, stone fruit sweetness, and a clean, tea-like finish of exceptional clarity.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Processing</div>
+            <div class="sa-row-value">Washed — grown in the Yungas cloud forests at altitude, with processing in micro-mills operated by indigenous cooperatives.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Altitude</div>
+            <div class="sa-row-value">1,200 – 2,300 masl. Among the highest-grown coffees in all of South America — producing extraordinary cup clarity.</div>
+          </div>
+          <div class="sa-metrics">
+            <div class="sa-metric"><div class="sa-metric-val">~5K</div><div class="sa-metric-label">Metric tons / yr</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">2,300m</div><div class="sa-metric-label">Peak altitude</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">100%</div><div class="sa-metric-label">Arabica only</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">Rare</div><div class="sa-metric-label">Limited global supply</div></div>
+          </div>
+        </div>
+        <div class="sa-card-footer">
+          <a href="https://www.cafebol.bo" target="_blank" rel="noopener" class="sa-link">Consejo Boliviano del Café</a>
+        </div>
+      </div>
+
+      <!-- ECUADOR -->
+      <div class="sa-card fade-up fade-up-delay-4">
+        <div class="sa-card-header">
+          <div class="sa-rank">05</div>
+          <div class="sa-flag">South America · Specialty Frontier</div>
+          <div class="sa-country-name">Ecuador</div>
+          <div class="sa-region-tag">Loja · Pichincha · Zamora-Chinchipe · Galápagos</div>
+        </div>
+        <div class="sa-card-body">
+          <div class="sa-row">
+            <div class="sa-row-label">Bean Type</div>
+            <div class="sa-row-value">Arabica (highlands) &amp; Robusta (coast). Home to the world-famous Galápagos Island coffees, grown in a unique volcanic ecosystem.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Tasting Profile</div>
+            <div class="sa-row-value">Delicate and aromatic — bright citrus acidity, floral hibiscus notes, tropical fruit, and a soft, rounded sweetness with medium body.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Processing</div>
+            <div class="sa-row-value">Washed and natural — Loja highlands produce refined washed lots; the Galápagos uses fully organic, pesticide-free methods by law.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Altitude</div>
+            <div class="sa-row-value">1,200 – 2,100 masl in highland regions. Galápagos coffees are lower but benefit from the archipelago's unique volcanic terroir.</div>
+          </div>
+          <div class="sa-metrics">
+            <div class="sa-metric"><div class="sa-metric-val">~30K</div><div class="sa-metric-label">Metric tons / yr</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">2,100m</div><div class="sa-metric-label">Peak altitude</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">Galápagos</div><div class="sa-metric-label">Unique volcanic origin</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">100%</div><div class="sa-metric-label">Organic, Galápagos</div></div>
+          </div>
+        </div>
+        <div class="sa-card-footer">
+          <a href="https://anecafe.org.ec" target="_blank" rel="noopener" class="sa-link">ANECAFÉ Ecuador</a>
+        </div>
+      </div>
+
+      <!-- VENEZUELA -->
+      <div class="sa-card fade-up fade-up-delay-5">
+        <div class="sa-card-header">
+          <div class="sa-rank">06</div>
+          <div class="sa-flag">South America · Historic Origin</div>
+          <div class="sa-country-name">Venezuela</div>
+          <div class="sa-region-tag">Táchira · Mérida · Trujillo · Monagas</div>
+        </div>
+        <div class="sa-card-body">
+          <div class="sa-row">
+            <div class="sa-row-label">Bean Type</div>
+            <div class="sa-row-value">Arabica — Typica and Bourbon, with traditional "washed" processing rooted in colonial-era methods still practised today.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Tasting Profile</div>
+            <div class="sa-row-value">Mild and well-balanced — gentle acidity, notes of dark cocoa, dried apricot, toffee, and a pleasantly soft, full-bodied finish.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Processing</div>
+            <div class="sa-row-value">Washed — traditional estate-level processing in the Andes highlands; historically one of the most exported origins of the 19th century.</div>
+          </div>
+          <div class="sa-row">
+            <div class="sa-row-label">Altitude</div>
+            <div class="sa-row-value">800 – 1,800 masl. The Andes of Táchira and Mérida deliver the country's most refined and sought-after specialty lots.</div>
+          </div>
+          <div class="sa-metrics">
+            <div class="sa-metric"><div class="sa-metric-val">~35K</div><div class="sa-metric-label">Metric tons / yr</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">1,800m</div><div class="sa-metric-label">Peak altitude</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">100%</div><div class="sa-metric-label">Arabica only</div></div>
+            <div class="sa-metric"><div class="sa-metric-val">300+</div><div class="sa-metric-label">Yrs of cultivation</div></div>
+          </div>
+        </div>
+        <div class="sa-card-footer">
+          <a href="https://www.ico.org" target="_blank" rel="noopener" class="sa-link">International Coffee Org.</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
 
   <!-- PROCESS -->
   <section class="process" id="process">
@@ -919,7 +825,7 @@
       <div class="process-step fade-up">
         <div class="step-num">I</div>
         <div class="step-title">Origin Selection</div>
-        <div class="step-text">We visit farms, assess growing conditions, and cup hundreds of lots to select only the finest harvests each season.</div>
+        <div class="step-text">We visit farms across South America and beyond, assessing growing conditions and cupping hundreds of lots each season.</div>
       </div>
       <div class="process-step fade-up fade-up-delay-1">
         <div class="step-num">II</div>
@@ -939,7 +845,7 @@
     </div>
   </section>
 
-  <!-- BANNER QUOTE -->
+  <!-- BANNER -->
   <div class="banner fade-up">
     <div class="banner-label">The Snowline Standard</div>
     <div class="banner-quote">"Great coffee, like great counsel, rewards those willing to seek quality above the noise — and above the clouds."</div>
@@ -954,19 +860,14 @@
     </div>
     <div class="shop-grid">
       <div class="shop-card fade-up">
-        <div class="shop-card-img" style="background: linear-gradient(135deg, #2c1810, #1a0f0a);">
-          <div class="coffee-art">
-            <div class="coffee-circle"></div>
-            <div class="coffee-circle"></div>
-            <div class="coffee-circle"></div>
-            <div class="coffee-dot"></div>
-          </div>
+        <div class="shop-card-img" style="background:linear-gradient(135deg,#2c1810,#1a0f0a);">
+          <div class="coffee-art"><div class="coffee-circle"></div><div class="coffee-circle"></div><div class="coffee-circle"></div><div class="coffee-dot"></div></div>
           <div class="card-badge">Best Seller</div>
         </div>
         <div class="shop-card-body">
           <div class="card-origin">Ethiopia · Yirgacheffe</div>
           <div class="card-name">Gedeb Lot 14</div>
-          <div class="card-desc">Jasmine, bergamot & blackcurrant. A natural process masterpiece at 2,100m. Light roast.</div>
+          <div class="card-desc">Jasmine, bergamot &amp; blackcurrant. A natural process masterpiece at 2,100m. Light roast.</div>
           <div class="card-footer">
             <div class="card-price">$28 <span>/ 250g</span></div>
             <a href="#" class="card-btn">Add to Cart</a>
@@ -974,19 +875,14 @@
         </div>
       </div>
       <div class="shop-card fade-up fade-up-delay-1">
-        <div class="shop-card-img" style="background: linear-gradient(135deg, #3d2314, #2c1810);">
-          <div class="coffee-art">
-            <div class="coffee-circle"></div>
-            <div class="coffee-circle"></div>
-            <div class="coffee-circle"></div>
-            <div class="coffee-dot"></div>
-          </div>
+        <div class="shop-card-img" style="background:linear-gradient(135deg,#3d2314,#2c1810);">
+          <div class="coffee-art"><div class="coffee-circle"></div><div class="coffee-circle"></div><div class="coffee-circle"></div><div class="coffee-dot"></div></div>
           <div class="card-badge">New Arrival</div>
         </div>
         <div class="shop-card-body">
           <div class="card-origin">Colombia · Huila</div>
           <div class="card-name">Finca La Palma</div>
-          <div class="card-desc">Caramel, red apple & hazelnut. A silken washed Colombian at 1,950m. Medium roast.</div>
+          <div class="card-desc">Caramel, red apple &amp; hazelnut. A silken washed Colombian at 1,950m. Medium roast.</div>
           <div class="card-footer">
             <div class="card-price">$26 <span>/ 250g</span></div>
             <a href="#" class="card-btn">Add to Cart</a>
@@ -994,19 +890,14 @@
         </div>
       </div>
       <div class="shop-card fade-up fade-up-delay-2">
-        <div class="shop-card-img" style="background: linear-gradient(135deg, #1a0f0a, #0e0806);">
-          <div class="coffee-art">
-            <div class="coffee-circle"></div>
-            <div class="coffee-circle"></div>
-            <div class="coffee-circle"></div>
-            <div class="coffee-dot"></div>
-          </div>
+        <div class="shop-card-img" style="background:linear-gradient(135deg,#1a0f0a,#0e0806);">
+          <div class="coffee-art"><div class="coffee-circle"></div><div class="coffee-circle"></div><div class="coffee-circle"></div><div class="coffee-dot"></div></div>
           <div class="card-badge">Limited</div>
         </div>
         <div class="shop-card-body">
           <div class="card-origin">Guatemala · Huehue.</div>
           <div class="card-name">El Injerto Reserve</div>
-          <div class="card-desc">Dark chocolate, dried cherry & brown sugar. A honey-processed award lot. Medium-dark roast.</div>
+          <div class="card-desc">Dark chocolate, dried cherry &amp; brown sugar. A honey-processed award lot. Medium-dark roast.</div>
           <div class="card-footer">
             <div class="card-price">$34 <span>/ 250g</span></div>
             <a href="#" class="card-btn">Add to Cart</a>
@@ -1016,38 +907,24 @@
     </div>
   </section>
 
-  <!-- SNOWLINE CONNECTION -->
+  <!-- CONNECTION -->
   <section class="connection" id="connection">
     <div class="fade-up">
       <div class="section-label">The Snowline Story</div>
       <h2 class="connection-title">Built on <em>expertise,</em><br>driven by passion</h2>
       <p class="connection-text">Snowline Group Coffee Co. was born from a simple conviction: the same discipline that guides our mining advisory work — deep knowledge, global perspective, and an unwillingness to compromise on quality — belongs in the cup.</p>
-      <p class="connection-text">Founded by Dennis Rourke, a mining industry veteran with over two decades of global experience, Snowline Group LLC has long understood what it means to extract value from the world's most demanding environments. Coffee, it turns out, demands the same respect.</p>
+      <p class="connection-text">Founded by Dennis Rourke, a mining industry veteran with over two decades of global experience, <a href="https://www.snowlinegroup.com" target="_blank" rel="noopener">Snowline Group LLC</a> has long understood what it means to extract value from the world's most demanding environments. Coffee, it turns out, demands the same respect.</p>
       <div class="connection-stats">
-        <div class="stat">
-          <div class="stat-num">20+</div>
-          <div class="stat-label">Years of global expertise</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">3</div>
-          <div class="stat-label">Sourcing continents</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Direct trade</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">MT</div>
-          <div class="stat-label">Roasted in Whitefish</div>
-        </div>
+        <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Years global expertise</div></div>
+        <div class="stat"><div class="stat-num">6</div><div class="stat-label">SA origins visited</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Direct trade</div></div>
+        <div class="stat"><div class="stat-num">MT</div><div class="stat-label">Roasted in Whitefish</div></div>
       </div>
     </div>
     <div class="connection-visual fade-up fade-up-delay-1">
       <div class="snowline-emblem">
         <div class="emblem-ring"></div>
-        <div class="emblem-ring emblem-ring-2">
-          <div class="emblem-tick"></div>
-        </div>
+        <div class="emblem-ring emblem-ring-2"><div class="emblem-tick"></div></div>
         <div class="emblem-ring emblem-ring-3"></div>
         <div class="emblem-center">
           <div class="emblem-title">Snowline<br>Group</div>
@@ -1062,10 +939,10 @@
   <section class="newsletter fade-up">
     <div class="section-label">Stay Connected</div>
     <h2 class="newsletter-title">Join the <em>inner circle</em></h2>
-    <p class="newsletter-sub">New origins, limited releases, and roasting notes — delivered to your inbox before anyone else hears about them.</p>
+    <p class="newsletter-sub">New origins, limited releases, and field notes from our South America sourcing trips — delivered before anyone else hears about them.</p>
     <div class="newsletter-form">
       <input class="newsletter-input" type="email" placeholder="Your email address" />
-      <button class="newsletter-btn">Subscribe</button>
+      <button class="newsletter-btn" id="subBtn">Subscribe</button>
     </div>
   </section>
 
@@ -1074,7 +951,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">Snowline Group Coffee Co.</div>
-        <div class="footer-brand-sub">Part of Snowline Group LLC</div>
+        <div class="footer-brand-sub">Part of <a href="https://www.snowlinegroup.com" target="_blank" rel="noopener">Snowline Group LLC</a></div>
         <div class="footer-brand-desc">Specialty coffee sourced from the world's highest farms, roasted with precision in Whitefish, Montana. Where expertise meets elevation.</div>
       </div>
       <div>
@@ -1091,9 +968,9 @@
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
           <li><a href="#">Our Story</a></li>
-          <li><a href="#">Origins & Partners</a></li>
+          <li><a href="#south-america">South America Regions</a></li>
           <li><a href="#">Roasting Philosophy</a></li>
-          <li><a href="#">Snowline Group LLC</a></li>
+          <li><a href="https://www.snowlinegroup.com" target="_blank" rel="noopener">Snowline Group LLC</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
       </div>
@@ -1115,40 +992,37 @@
         <a href="#">Terms of Service</a>
         <a href="#">Shipping</a>
       </div>
-      <div class="footer-snowline">A <a href="#">Snowline Group LLC</a> company · Whitefish, MT</div>
+      <div class="footer-snowline">A <a href="https://www.snowlinegroup.com" target="_blank" rel="noopener">Snowline Group LLC</a> company · Whitefish, MT</div>
     </div>
   </footer>
 
   <script>
-    // Scroll fade-in animations
+    // Scroll fade-in
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.08 });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.07 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Newsletter form feedback
-    const btn = document.querySelector('.newsletter-btn');
-    if (btn) {
-      btn.addEventListener('click', () => {
+    // Newsletter
+    const subBtn = document.getElementById('subBtn');
+    if (subBtn) {
+      subBtn.addEventListener('click', () => {
         const input = document.querySelector('.newsletter-input');
         if (input && input.value.includes('@')) {
-          btn.textContent = 'Subscribed ✓';
-          btn.style.background = '#5c3220';
-          btn.style.color = '#e8b860';
+          subBtn.textContent = 'Subscribed ✓';
+          subBtn.style.background = '#5c3220';
+          subBtn.style.color = '#e8b860';
           input.value = '';
-          input.placeholder = 'Thank you for subscribing!';
+          input.placeholder = 'Thank you — welcome to the inner circle!';
         } else {
-          input.style.borderColor = 'rgba(200,100,60,0.8)';
-          input.placeholder = 'Please enter a valid email';
-          setTimeout(() => {
-            input.style.borderColor = 'rgba(200,150,60,0.25)';
-            input.placeholder = 'Your email address';
-          }, 2000);
+          if (input) {
+            input.style.borderColor = 'rgba(200,100,60,0.8)';
+            input.placeholder = 'Please enter a valid email';
+            setTimeout(() => {
+              input.style.borderColor = 'rgba(200,150,60,0.25)';
+              input.placeholder = 'Your email address';
+            }, 2200);
+          }
         }
       });
     }
